@@ -1,0 +1,42 @@
+
+.modal-sport {
+    color: rgb(6, 1, 13);
+    /* display: inline-block; */
+
+    margin-top: 20%;
+    text-align: center;
+}
+
+.input-fields {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.input, label {
+    display: block;
+    margin-bottom: 5%;
+}
+
+.input-data, .input-km{
+    padding: 12px 4px;
+    line-height: 15px;
+    width: 148px;
+    border-radius: 8px;
+}
+
+.input-data-label, .input-km-label {
+    text-align: left;
+}
+
+.btn-sport {
+    padding: 12px 4px;
+    line-height: 15px;
+    width: 148px;
+    border-radius: 8px;
+    background-color: rgb(6, 1, 13);
+    color: white;
+}
+
+.body {
+    text-align: center;
+}
