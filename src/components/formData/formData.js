@@ -1,32 +1,99 @@
 
+import { useState } from 'react';
 
+import TableResultData from "../tableResults/tableResults";
 
-function FormData() {
+let tableData = [];
+
+export const SportData = () =>  {
+    
+    const [form, setForm] = useState({
+        date: "",
+        distance: 0,
+        table: tableData,
+      });
+    
+
+    const { date, distance, table } = form;
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+    
+        const i = table.findIndex((el) => el.date === form.date);
+        // if data already exists in table rewrite it
+        if (i === -1) {
+            tableData.push({ date: date, distance: distance });
+        } else {
+            tableData[i].distance = Number(tableData[i].distance) + Number(distance);
+          setForm((prevForm) => ({
+            ...prevForm,
+            table: tableData,
+          }));
+        }
+    
+        setForm((prevForm) => ({
+          ...prevForm,
+          table: tableData,
+        }));
+      };
+    
+      const deleteData = (e) => {
+        tableData = tableData.filter(
+          (el) => el.date !== e.target.closest(".table-body-el").id
+        );
+        setForm((prevForm) => ({
+          ...prevForm,
+          table: tableData,
+        }));
+      };
+    
+    //   on every change, update const form
+      const changeData = (e) => {
+        const { name, value } = e.target;
+        setForm((prevForm) => ({
+          ...prevForm,
+          [name]: value,
+        }));
+      };
+
 
     return (
         <div>
-
-            <form className="modal-sport">
+            <form 
+            className="modal-sport"
+            onSubmit={handleSubmit}>
 
                 <div className="input-fields">
-                    <label for="data-sport" className="input-data-label">Дата (дд.мм.гг)</label>
-                        <input id="data-sport" className="input-data" type="text" name="data-sport" />
+                <label className="input-data-label">
+                    Дата (ДД.ММ.ГГ)
+                    <input
+                        name="date"
+                        type="date"
+                        className="input-data"
+                        onChange={changeData}
+                        required
+                    /></label>
                 </div>
 
                 <div className="input-fields">
-                    <label for="km-sport" className="input-km-label">Пройдено км</label>
-                        <input id="km-sport" className="input-km" type="text" readonly="readOnly" name="km-sport" />
+                    <label className="input-km-label">
+                Пройдено км
+                    <input
+                        className="input-km" 
+                        type="number"
+                        name="distance"
+                        onChange={changeData}
+                        required
+                        />
+                </label>
+          
                 </div>
 
-                <div className="input-fields">
-                    <button className="btn-sport" type="submit">Ок</button>
-                </div>
-
+                <button className="btn-sport" type="submit">Ок</button>
             </form>
+            <TableResultData table={form.table} deleteBut={deleteData} />
+      
         </div>
     );
 
 }
-
-
-export default FormData

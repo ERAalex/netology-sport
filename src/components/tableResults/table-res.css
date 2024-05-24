@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+.table-results {
+        border-radius: 10px;
+        border-color: black;
+        border-style: solid;
+        width: 50%;
+        margin-left: 25%;
+        margin-top: 2%;
+        background-color: #04AA6D;
+    }
+    
+.no-data {
+    color: rgb(68, 6, 6);
+    margin-left: 2%;
+    margin-top: 5%;
+    font-size: 30px;
+}
+
+.table-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2%;
+
+}
+
+.table-body-el {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 2%;
+}
+
+.table-span-el{
+    margin-right: 3%;
+    margin-left: 3%;
+    font-size: 18px;
+}
