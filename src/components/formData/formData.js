@@ -37,16 +37,6 @@ export const SportData = () =>  {
         }));
       };
     
-      const deleteData = (e) => {
-        tableData = tableData.filter(
-          (el) => el.date !== e.target.closest(".table-body-el").id
-        );
-        setForm((prevForm) => ({
-          ...prevForm,
-          table: tableData,
-        }));
-      };
-    
     //   on every change, update const form
       const changeData = (e) => {
         const { name, value } = e.target;
@@ -91,7 +81,7 @@ export const SportData = () =>  {
 
                 <button className="btn-sport" type="submit">Ок</button>
             </form>
-            <TableResultData table={form.table} deleteBut={deleteData} />
+            <TableResultData table={form.table} />
       
         </div>
     );
